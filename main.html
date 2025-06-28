@@ -1,111 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Voting Eligibility Checker</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f6f8;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-
-    #votingForm {
-      background-color: white;
-      padding: 30px 40px;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      width: 300px;
-    }
-
-    h2 {
-      text-align: center;
-      color: #333;
-    }
-
-    label {
-      display: block;
-      margin-top: 15px;
-      font-weight: bold;
-      color: #555;
-    }
-
-    input {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 16px;
-    }
-
-    button {
-      width: 100%;
-      padding: 12px;
-      margin-top: 20px;
-      background-color: #007bff;
-      color: white;
-      font-size: 16px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #0056b3;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vote Eligibility Form</title>
+  <link rel="stylesheet" href="style.css"> <!-- Optional: Link to CSS -->
 </head>
 <body>
 
-  <form id="votingForm">
-    <h2>Check If You Can Vote</h2>
-
-    <label for="name">Name:</label>
-    <input type="text" id="name" />
-
-    <label for="age">Age:</label>
-    <input type="number" id="age" />
-
+  <h2>Check Voting Eligibility</h2>
+  <form id="voteForm">
+    <input type="text" id="name" placeholder="Enter your name" />
+    <input type="number" id="age" placeholder="Enter your age" />
     <button type="submit" id="btn">Submit</button>
   </form>
 
-  <script>
-    document.getElementById("votingForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-
-      const name = document.getElementById("name").value.trim();
-      const age = document.getElementById("age").value.trim();
-
-      if (name === "" || age === "") {
-        alert("Please enter valid details.");
-        return;
-      }
-
-      const ageNum = parseInt(age);
-
-      new Promise((resolve, reject) => {
-        setTimeout(() => {
-          if (ageNum > 18) {
-            resolve();
-          } else {
-            reject();
-          }
-        }, 4000);
-      })
-      .then(() => {
-        alert(`Welcome, ${name}. You can vote.`);
-      })
-      .catch(() => {
-        alert(`Oh sorry ${name}. You aren't old enough.`);
-      });
-    });
-  </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
